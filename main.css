@@ -1,0 +1,9 @@
+
+body{
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.algoSelect{
+  display: flex;
+  flex-direction: column;
+}

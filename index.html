@@ -4,12 +4,33 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="main.js"></script>
     <link rel="stylesheet" href="main.css" />
     <title>Sort visualizer</title>
   </head>
   <body>
     <div id="parent">
+      <h1>Sort visualizer</h1>
+
+      <div class="algoSelect">
+        <div class="inputGroup">
+          <input type="radio" name="sortAlgorithm" id="bubble" />
+          <label for="bubble">Bubble Sort</label>
+        </div>
+        <div class="inputGroup">
+          <input type="radio" name="sortAlgorithm" id="merge" />
+          <label for="merge">Merge Sort</label>
+        </div>
+        <div class="inputGroup">
+          <input type="radio" name="sortAlgorithm" id="quick" />
+          <label for="quick">Quick Sort</label>
+        </div>
+        <div class="inputGroup">
+          <input type="radio" name="sortAlgorithm" id="select" />
+          <label for="select">Selection Sort</label>
+        </div>
+      </div>
       <div id="columnPlot"></div>
     </div>
   </body>
