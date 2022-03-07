@@ -1,18 +1,39 @@
 "use strict";
 
+let plotObj = {};
+
 window.addEventListener("load", (event) => {
-  plotColumn();
+  let dataArr = generateData();
+  plotColumn(dataArr);
 });
 
-const generateData = () => {};
+const generateData = () => {
+  let randomData = [];
 
-const plotColumn = () => {
-  Highcharts.chart("columnPlot", {
+  randomData = Array.from({ length: 10 }, () =>
+    Math.floor(Math.random() * 100)
+  );
+
+  return randomData;
+};
+
+const randomizeData = () => {
+  const dataArr = generateData();
+  plotObj.series[0].update(
+    {
+      data: dataArr,
+    },
+    true
+  );
+};
+
+const plotColumn = (dataArr) => {
+  plotObj = Highcharts.chart("columnPlot", {
     chart: {
       type: "column",
     },
     title: {
-      text: "Random generated data",
+      text: "",
     },
     xAxis: {
       categories: [
@@ -50,9 +71,7 @@ const plotColumn = () => {
     series: [
       {
         name: "Sample Data",
-        data: [
-          49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1,
-        ],
+        data: dataArr,
       },
     ],
   });

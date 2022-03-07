@@ -1,9 +1,22 @@
 
 body{
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Poppins', sans-serif;
+}
+
+.parent{
+  display: flex;
+  flex-direction: column;
 }
 
 .algoSelect{
   display: flex;
   flex-direction: column;
+}
+
+.inputGroup{
+  font-weight: 500;
+}
+
+.algoSelect{
+  padding: 10px 0px;
 }

@@ -3,7 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Webapp for visualization of various sorting algorithms">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;1,300&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="main.js"></script>
     <link rel="stylesheet" href="main.css" />
@@ -13,22 +20,28 @@
     <div id="parent">
       <h1>Sort visualizer</h1>
 
-      <div class="algoSelect">
-        <div class="inputGroup">
-          <input type="radio" name="sortAlgorithm" id="bubble" />
-          <label for="bubble">Bubble Sort</label>
+      <div class="header">
+        <div class="algoSelect">
+          <div class="inputGroup">
+            <input type="radio" name="sortAlgorithm" id="bubble" />
+            <label for="bubble">Bubble Sort</label>
+          </div>
+          <div class="inputGroup">
+            <input type="radio" name="sortAlgorithm" id="merge" />
+            <label for="merge">Merge Sort</label>
+          </div>
+          <div class="inputGroup">
+            <input type="radio" name="sortAlgorithm" id="quick" />
+            <label for="quick">Quick Sort</label>
+          </div>
+          <div class="inputGroup">
+            <input type="radio" name="sortAlgorithm" id="select" />
+            <label for="select">Selection Sort</label>
+          </div>
         </div>
-        <div class="inputGroup">
-          <input type="radio" name="sortAlgorithm" id="merge" />
-          <label for="merge">Merge Sort</label>
-        </div>
-        <div class="inputGroup">
-          <input type="radio" name="sortAlgorithm" id="quick" />
-          <label for="quick">Quick Sort</label>
-        </div>
-        <div class="inputGroup">
-          <input type="radio" name="sortAlgorithm" id="select" />
-          <label for="select">Selection Sort</label>
+        <div class="btnGroup">
+          <button onclick="randomizeData()">Randomize Data</button>
+          <button>Sort</button>
         </div>
       </div>
       <div id="columnPlot"></div>
