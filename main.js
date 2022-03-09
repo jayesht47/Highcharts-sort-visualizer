@@ -76,3 +76,52 @@ const plotColumn = (dataArr) => {
     ],
   });
 };
+
+const updatePlot = (dataArr) => {
+  plotObj.series[0].update(
+    {
+      data: dataArr,
+    },
+    true
+  );
+};
+
+//--------------------------------Sorting Algorithms-----------------------------
+
+const selectionSort = (inputArr) => {
+  for (let i = 0; i < inputArr.length; i++) {
+    const tempArr = inputArr.slice(i);
+    const smallest = getSmallestInArr(tempArr);
+    let smallestIndex = 0;
+
+    for (let j = i; j < inputArr.length; j++) {
+      if (smallest === inputArr[j]) {
+        smallestIndex = j;
+        break;
+      }
+    }
+
+    setTimeout(() => {
+      updatePlot(inputArr);
+    }, 500);
+
+    //swapping smallest from inputArr
+
+    inputArr[smallestIndex] = inputArr[i];
+    inputArr[i] = smallest;
+  }
+  return inputArr;
+};
+
+const getSmallestInArr = (inputArr) => {
+  if (inputArr.length === 0) return inputArr[0];
+
+  let smallest = Number.MAX_SAFE_INTEGER;
+
+  for (const number of inputArr) {
+    if (number < smallest) {
+      smallest = number;
+    }
+  }
+  return smallest;
+};
