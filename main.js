@@ -82,13 +82,18 @@ const updatePlot = (dataArr) => {
     {
       data: dataArr,
     },
-    true
+    false
   );
+  plotObj.redraw();
 };
+
+//-----------------------------------Utils---------------------------------
+
+const timer = (ms) => new Promise((res) => setTimeout(res, ms));
 
 //--------------------------------Sorting Algorithms-----------------------------
 
-const selectionSort = (inputArr) => {
+const selectionSort = async (inputArr) => {
   for (let i = 0; i < inputArr.length; i++) {
     const tempArr = inputArr.slice(i);
     const smallest = getSmallestInArr(tempArr);
@@ -101,11 +106,8 @@ const selectionSort = (inputArr) => {
       }
     }
 
-    setTimeout(() => {
-      updatePlot(inputArr);
-    }, 500);
-
-    //swapping smallest from inputArr
+    await timer(1000);
+    updatePlot(inputArr);
 
     inputArr[smallestIndex] = inputArr[i];
     inputArr[i] = smallest;
