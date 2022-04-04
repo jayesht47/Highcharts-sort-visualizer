@@ -18,6 +18,9 @@ const generateData = () => {
   return randomData;
 };
 
+/**
+ * used on randomize data button click
+ */
 const randomizeData = () => {
   const dataArr = generateData();
   plotObj.series[0].update(
