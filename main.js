@@ -1,10 +1,11 @@
 "use strict";
 
 let plotObj = {};
+let plotData = [];
 
 window.addEventListener("load", (event) => {
-  let dataArr = generateData();
-  plotColumn(dataArr);
+  plotData = generateData();
+  plotColumn(plotData);
 });
 
 const generateData = () => {
@@ -18,10 +19,10 @@ const generateData = () => {
 };
 
 const randomizeData = () => {
-  const dataArr = generateData();
+  plotData = generateData();
   plotObj.series[0].update(
     {
-      data: dataArr,
+      data: plotData,
     },
     true
   );
@@ -87,7 +88,28 @@ const updatePlot = (dataArr) => {
   plotObj.redraw();
 };
 
-//-----------------------------------Utils---------------------------------
+//----------------------------------- Click handlers -------------------------------------
+
+const sortBtnClickHandler = () => {
+  if (document.querySelector('input[name="sortAlgorithm"]:checked') != null) {
+    const selectedAlgo = document.querySelector(
+      'input[name="sortAlgorithm"]:checked'
+    ).value;
+
+    switch (selectedAlgo) {
+      case "selection":
+        selectionSort(plotData);
+        break;
+
+      default:
+        break;
+    }
+  } else {
+    throw Error("No Algorithm selected!");
+  }
+};
+
+//-----------------------------------Utils-------------------------------------
 
 const timer = (ms) => new Promise((res) => setTimeout(res, ms));
 
@@ -106,7 +128,7 @@ const selectionSort = async (inputArr) => {
       }
     }
 
-    await timer(1000);
+    await timer(500);
     updatePlot(inputArr);
 
     inputArr[smallestIndex] = inputArr[i];

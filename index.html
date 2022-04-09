@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="description" content="Webapp for visualization of various sorting algorithms">
+    <meta
+      name="description"
+      content="Webapp for visualization of various sorting algorithms"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -19,29 +22,29 @@
   <body>
     <div id="parent">
       <h1>Sort visualizer</h1>
-
+      <!--Sampe Comment-->
       <div class="header">
         <div class="algoSelect">
           <div class="inputGroup">
-            <input type="radio" name="sortAlgorithm" id="bubble" />
+            <input type="radio" name="sortAlgorithm" value="bubble" id="bubble" />
             <label for="bubble">Bubble Sort</label>
           </div>
           <div class="inputGroup">
-            <input type="radio" name="sortAlgorithm" id="merge" />
+            <input type="radio" name="sortAlgorithm" value="merge" id="merge" />
             <label for="merge">Merge Sort</label>
           </div>
           <div class="inputGroup">
-            <input type="radio" name="sortAlgorithm" id="quick" />
+            <input type="radio" name="sortAlgorithm" value="quick" id="quick" />
             <label for="quick">Quick Sort</label>
           </div>
           <div class="inputGroup">
-            <input type="radio" name="sortAlgorithm" id="select" />
+            <input type="radio" name="sortAlgorithm" value="selection" id="selection" />
             <label for="select">Selection Sort</label>
           </div>
         </div>
         <div class="btnGroup">
           <button onclick="randomizeData()">Randomize Data</button>
-          <button>Sort</button>
+          <button onclick="sortBtnClickHandler()">Sort</button>
         </div>
       </div>
       <div id="columnPlot"></div>
