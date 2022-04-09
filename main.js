@@ -1,11 +1,11 @@
 "use strict";
 
 let plotObj = {};
-let plotData = [];
+let dataArr = [];
 
-window.addEventListener("load", (event) => {
-  plotData = generateData();
-  plotColumn(plotData);
+window.addEventListener("load", event => {
+  dataArr = generateData();
+  plotColumn(dataArr);
 });
 
 const generateData = () => {
@@ -18,23 +18,26 @@ const generateData = () => {
   return randomData;
 };
 
+/**
+ * used on randomize data button click
+ */
 const randomizeData = () => {
   plotData = generateData();
   plotObj.series[0].update(
     {
-      data: plotData,
+      data: dataArr
     },
     true
   );
 };
 
-const plotColumn = (dataArr) => {
+const plotColumn = dataArr => {
   plotObj = Highcharts.chart("columnPlot", {
     chart: {
-      type: "column",
+      type: "column"
     },
     title: {
-      text: "",
+      text: ""
     },
     xAxis: {
       categories: [
@@ -47,41 +50,41 @@ const plotColumn = (dataArr) => {
         "Seven",
         "Eight",
         "Nine",
-        "Ten",
+        "Ten"
       ],
-      crosshair: true,
+      crosshair: true
     },
     credits: {
-      enabled: false,
+      enabled: false
     },
     yAxis: {
       min: 0,
       title: {
-        text: "",
-      },
+        text: ""
+      }
     },
     plotOptions: {
       column: {
         pointPadding: 0.2,
-        borderWidth: 0,
-      },
+        borderWidth: 0
+      }
     },
     legend: {
-      enabled: false,
+      enabled: false
     },
     series: [
       {
         name: "Sample Data",
-        data: dataArr,
-      },
-    ],
+        data: dataArr
+      }
+    ]
   });
 };
 
-const updatePlot = (dataArr) => {
+const updatePlot = dataArr => {
   plotObj.series[0].update(
     {
-      data: dataArr,
+      data: dataArr
     },
     false
   );
@@ -111,11 +114,28 @@ const sortBtnClickHandler = () => {
 
 //-----------------------------------Utils-------------------------------------
 
-const timer = (ms) => new Promise((res) => setTimeout(res, ms));
+const timer = ms => new Promise(res => setTimeout(res, ms));
+
+//--------------------------------Handlers-----------------------------
+
+const sortClickHandler = () => {
+  const dd = document.querySelector("input[name='sortAlgorithm']:checked");
+  const selectedAlgo = dd.id;
+
+  switch (selectedAlgo) {
+    case "select":
+      selectionSort(dataArr);
+
+      break;
+
+    default:
+      break;
+  }
+};
 
 //--------------------------------Sorting Algorithms-----------------------------
 
-const selectionSort = async (inputArr) => {
+const selectionSort = async inputArr => {
   for (let i = 0; i < inputArr.length; i++) {
     const tempArr = inputArr.slice(i);
     const smallest = getSmallestInArr(tempArr);
@@ -137,7 +157,7 @@ const selectionSort = async (inputArr) => {
   return inputArr;
 };
 
-const getSmallestInArr = (inputArr) => {
+const getSmallestInArr = inputArr => {
   if (inputArr.length === 0) return inputArr[0];
 
   let smallest = Number.MAX_SAFE_INTEGER;
